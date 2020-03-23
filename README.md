@@ -1,4 +1,4 @@
-[![Website](https://img.shields.io/website-up-down-green-red/http/hclonely.com.svg)](http://hclonely.com/)
+[![Website](https://img.shields.io/badge/Website-HTTPS-green.svg)](https://hclonely.com/)
 [![License](https://img.shields.io/github/license/HCLonely/home.github.io.svg)](/LICENSE)
 [![Say Thanks](https://img.shields.io/badge/Say-Thanks!-1EAEDB.svg)](https://saythanks.io/to/dmego)
 
