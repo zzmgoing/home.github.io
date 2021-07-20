@@ -21,6 +21,8 @@
 
 .icon-weibo:before { content: "\e62d"; }
 
+.icon-github:before { content: "\e6e1"; }
+
 .icon-csdn:before { content: "\e60a"; }
 
 .icon-jianshu:before { content: "\e675"; }
@@ -38,6 +40,4 @@
 .icon-juejin:before { content: "\e601"; }
 
 .icon-mayun:before { content: "\e603"; }
-
-.icon-github:before { content: "\e6e1"; }
 
