@@ -38,8 +38,8 @@ $(document).ready(function () {
 		console.error(err);
 	})
 
-	
-	// var url = 'https://query.yahooapis.com/v1/public/yql' + 
+
+	// var url = 'https://query.yahooapis.com/v1/public/yql' +
     // '?q=' + encodeURIComponent('select * from json where url=@url') +
     // '&url=' + encodeURIComponent('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8') +
 	// '&format=json&callback=?';
@@ -48,15 +48,16 @@ $(document).ready(function () {
 	 * 获取Bing壁纸
 	 * 原先 YQL 已经无法提供服务了
 	 * 改用 JsonBird：https://bird.ioliu.cn/
-	 * 
+	 *
 	 */
-	var url = 'https://bird.ioliu.cn/v1/?url=https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8';
+	/*
+	var url = 'https://www.bing.com/HPImageArchive.aspx?format=jsonp&idx=0&n=8';
 	var imgUrls = JSON.parse(sessionStorage.getItem("imgUrls"));
 	var index = sessionStorage.getItem("index");
 	var $panel = $('#panel');
 	if(imgUrls == null){
 		imgUrls = new Array();
-		index = 0;		
+		index = 0;
 		$.get(url,function (result) {
 			images = result.images;
 			for (let i = 0; i < images.length; i++) {
@@ -81,7 +82,9 @@ $(document).ready(function () {
 		$panel.css("background-size", "cover");
 		sessionStorage.setItem("index",index);
 	}
-	
+	*/
+
+	$('#panel').css("background", "url('https://api.oneneko.com/bing') center center no-repeat #666").css("background-size", "cover");
 	$(".iUp").each(function (i, e) {
 		iUp.up(e);
 	});
