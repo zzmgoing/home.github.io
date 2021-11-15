@@ -1,3 +1,5 @@
+const corsGridaApiKey = "238c1d62-1558-42bf-b72d-ed7127ad107c"; //
+
 var iUp = (function () {
 	var t = 0,
 		d = 150,
@@ -40,51 +42,56 @@ $(document).ready(function () {
 
 
 	// var url = 'https://query.yahooapis.com/v1/public/yql' +
-    // '?q=' + encodeURIComponent('select * from json where url=@url') +
-    // '&url=' + encodeURIComponent('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8') +
+	// '?q=' + encodeURIComponent('select * from json where url=@url') +
+	// '&url=' + encodeURIComponent('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8') +
 	// '&format=json&callback=?';
 
 	/**
 	 * 获取Bing壁纸
 	 * 原先 YQL 已经无法提供服务了
-	 * 改用 JsonBird：https://bird.ioliu.cn/
-	 *
+	 * 改用 https://blog.oneneko.com/posts/2020/07/bing-api.html
 	 */
-	/*
-	var url = 'https://www.bing.com/HPImageArchive.aspx?format=jsonp&idx=0&n=8';
+
+	$.ajaxSetup({
+		headers: {
+			'x-cors-grida-api-key': corsGridaApiKey
+		}
+	});
+	var url = 'https://cors.bridged.cc/https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8';
 	var imgUrls = JSON.parse(sessionStorage.getItem("imgUrls"));
 	var index = sessionStorage.getItem("index");
 	var $panel = $('#panel');
-	if(imgUrls == null){
+	if (imgUrls == null) {
 		imgUrls = new Array();
 		index = 0;
-		$.get(url,function (result) {
+		$.get(url, function (result) {
 			images = result.images;
 			for (let i = 0; i < images.length; i++) {
 				const item = images[i];
 				imgUrls.push(item.url);
 			}
 			var imgUrl = imgUrls[index];
-			var url = "https://www.bing.com"+imgUrl;
-			$panel.css("background", "url('"+url+"') center center no-repeat #666");
+			var url = "https://www.bing.com" + imgUrl;
+			$panel.css("background", "url('" + url + "') center center no-repeat #666");
 			$panel.css("background-size", "cover");
-			sessionStorage.setItem("imgUrls",JSON.stringify(imgUrls));
-			sessionStorage.setItem("index",index);
+			sessionStorage.setItem("imgUrls", JSON.stringify(imgUrls));
+			sessionStorage.setItem("index", index);
+		})
+			.fail(function () {
+				$('#panel').css("background", "url('https://api.oneneko.com/bing') center center no-repeat #666").css("background-size", "cover");
 			});
-	}else{
-		if(index == 7)
+	} else {
+		if (index == 7)
 			index = 0;
 		else
 			index++;
 		var imgUrl = imgUrls[index];
-		var url = "https://www.bing.com"+imgUrl;
-		$panel.css("background", "url('"+url+"') center center no-repeat #666");
+		var url = "https://www.bing.com" + imgUrl;
+		$panel.css("background", "url('" + url + "') center center no-repeat #666");
 		$panel.css("background-size", "cover");
-		sessionStorage.setItem("index",index);
+		sessionStorage.setItem("index", index);
 	}
-	*/
 
-	$('#panel').css("background", "url('https://api.oneneko.com/bing') center center no-repeat #666").css("background-size", "cover");
 	$(".iUp").each(function (i, e) {
 		iUp.up(e);
 	});
@@ -94,16 +101,16 @@ $(document).ready(function () {
 	}
 });
 
-$('.btn-mobile-menu__icon').click(function() {
-    if ($('.navigation-wrapper').css('display') == "block") {
-      $('.navigation-wrapper').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-        $('.navigation-wrapper').toggleClass('visible animated bounceOutUp');
-        $('.navigation-wrapper').off('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
-      });
-      $('.navigation-wrapper').toggleClass('animated bounceInDown animated bounceOutUp');
+$('.btn-mobile-menu__icon').click(function () {
+	if ($('.navigation-wrapper').css('display') == "block") {
+		$('.navigation-wrapper').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+			$('.navigation-wrapper').toggleClass('visible animated bounceOutUp');
+			$('.navigation-wrapper').off('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+		});
+		$('.navigation-wrapper').toggleClass('animated bounceInDown animated bounceOutUp');
 
-    } else {
-      $('.navigation-wrapper').toggleClass('visible animated bounceInDown');
-    }
-    $('.btn-mobile-menu__icon').toggleClass('social iconfont icon-list social iconfont icon-angleup animated fadeIn');
+	} else {
+		$('.navigation-wrapper').toggleClass('visible animated bounceInDown');
+	}
+	$('.btn-mobile-menu__icon').toggleClass('social iconfont icon-list social iconfont icon-angleup animated fadeIn');
 });
